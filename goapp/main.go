@@ -1,9 +1,8 @@
 package main
 
 import (
-	"net/http"
-
 	"dchya24/golearn/email"
+	"dchya24/golearn/rabbit"
 	"dchya24/golearn/todo"
 
 	"github.com/go-chi/chi/v5"
@@ -22,5 +21,7 @@ func main() {
 
 	r.Get("/delete", todo.DeleteTodo)
 
-	http.ListenAndServe(":8000", r)
+	// http.ListenAndServe(":8000", r)
+
+	rabbit.StartMessageBroker()
 }
